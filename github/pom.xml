@@ -10,16 +10,21 @@
     language governing permissions and limitations under the License. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Model -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent -->
     <parent>
         <groupId>org.arquillian.extension</groupId>
         <artifactId>arquillian-governor-parent</artifactId>
         <version>1.0.0.Alpha2-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+
     <!-- Artifact Configuration -->
-    <artifactId>arquillian-governor-jira</artifactId>
-    <name>Arquillian Governor for JIRA</name>
+    <artifactId>arquillian-governor-github</artifactId>
+    <name>Arquillian Governor for GitHub</name>
 
     <!-- Properties -->
     <properties>
