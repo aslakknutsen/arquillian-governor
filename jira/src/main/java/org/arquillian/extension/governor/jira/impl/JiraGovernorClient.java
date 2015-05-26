@@ -23,6 +23,8 @@ import org.arquillian.extension.governor.api.GovernorClient;
 import org.arquillian.extension.governor.jira.api.Jira;
 import org.arquillian.extension.governor.jira.configuration.JiraGovernorConfiguration;
 import org.jboss.arquillian.core.spi.Validate;
+import org.jboss.arquillian.test.spi.TestResult;
+import org.jboss.arquillian.test.spi.event.suite.After;
 import org.jboss.arquillian.test.spi.execution.ExecutionDecision;
 
 import com.atlassian.jira.rest.client.api.JiraRestClient;
@@ -155,6 +157,11 @@ public class JiraGovernorClient implements GovernorClient<Jira, JiraGovernorStra
         Validate.notNull(jiraGovernorConfiguration, "Jira Governor configuration must be set.");
 
         return String.format(jiraGovernorConfiguration.getClosingMessage(), jiraGovernorConfiguration.getUsername());
+    }
+
+    @Override
+    public void reopen(String id, After event, TestResult testResult) {
+        throw new UnsupportedOperationException();
     }
 
 }

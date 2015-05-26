@@ -14,21 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.arquillian.extension.governor.api;
+package org.arquillian.extension.governor.github.api;
 
-import org.jboss.arquillian.test.spi.TestResult;
-import org.jboss.arquillian.test.spi.event.suite.After;
-import org.jboss.arquillian.test.spi.execution.ExecutionDecision;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import org.arquillian.extension.governor.api.Governor;
 
 /**
- * @author <a href="mailto:smikloso@redhat.com">Stefan Miklosovic</a>
+ * Place this annotation on a test method with Github issue (e.g. {@literal @Github("#1")})
+ *
+ * @author <a href="mailto:asotobu@gmail.com">Alex Soto</a>
  *
  */
-public interface GovernorClient<ANNOTATION, T extends GovernorStrategy>
+@Governor
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.METHOD })
+@Documented
+public @interface Github 
 {
-    ExecutionDecision resolve(ANNOTATION annotation);
+    String value() default "";
 
-    void close(String id);
-    void reopen(String id, After event, TestResult testResult);
-    void setGovernorStrategy(T strategy);
+    boolean force() default false;
 }
